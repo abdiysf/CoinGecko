@@ -16,4 +16,17 @@ class CryptoViewModel {
     let cryptoService = DataService()
     
     
+   func getCrpytocurrencies() {
+       Task {
+                  do {
+                      cryptocurrencies = try await cryptoService.fetchData() 
+                  } catch {
+                      print("Error fetching cryptocurrencies: \(error)")
+                  }
+              }
+    }
+    
+    func selectCryptocurrency(_ cryptocurrency: Cryptocurrency) {
+            selectedCryptocurrency = cryptocurrency
+        }
 }

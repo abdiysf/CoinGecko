@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CoinGeckoApp: App {
+    @State var cryptoModel = CryptoViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(cryptoModel)
         }
     }
 }

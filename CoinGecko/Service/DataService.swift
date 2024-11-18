@@ -11,10 +11,10 @@ struct DataService {
     // 1. api key initializing
     let api_key = Bundle.main.infoDictionary?["API_KEY"] as? String
     
-    func fetchData() async -> Cryptocurrency? {
+    func fetchData() async -> [Cryptocurrency] {
         // 2. check api key isn't null
         guard api_key != nil else {
-            return nil
+            return [Cryptocurrency]()
         }
         
         //MARK: - 3. add base url
@@ -33,15 +33,16 @@ struct DataService {
 
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            print("\(data)")
-            let decoder = JSONDecoder()
-            let cryptocurrency = try decoder.decode(Cryptocurrency.self, from: data)
-            return cryptocurrency
+            // Decode JSON
+                       let decoder = JSONDecoder()
+                       decoder.keyDecodingStrategy = .convertFromSnakeCase
+                       let cryptocurrencies = try decoder.decode([Cryptocurrency].self, from: data)
+                       return cryptocurrencies
         }
         catch {
-            print(error)
+            print("error ---- \(error)")
         }
-        return nil
+        return [Cryptocurrency]()
     }
     
     
