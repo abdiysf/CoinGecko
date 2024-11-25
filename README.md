@@ -55,5 +55,8 @@ CryptoTracker is an iOS application that displays information about cryptocurren
 - **MVVM Architecture**: Clean and maintainable code structure with ObservableObject for state management.
 
 ---
+## PREVIEW
+![image](https://github.com/user-attachments/assets/f3acb495-c349-4acb-b7fc-cef51022336d)
+
 
 Enjoy tracking your favorite cryptocurrencies with CryptoTracker! 🚀
